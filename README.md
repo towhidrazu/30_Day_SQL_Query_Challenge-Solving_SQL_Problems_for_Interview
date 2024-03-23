@@ -1,0 +1,2 @@
+# 30_Day_SQL_Query_Challenge-Solving_SQL_Problems_for_Interview
+Solving 30 SQL problems
