@@ -20,8 +20,8 @@ Problem Statement:
 
 ### Solution: 
 
-'''
+```
 a
-'''
+```
 
 
