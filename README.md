@@ -13,6 +13,7 @@ Problem Statement:
 - For pairs of brands in the same year 
       - if custom1 != custom3 OR custom2 != custom4 : then keep both pairs
 - For brands that do not have pairs in the same year : keep those rows as well
+!(Query1)[https://github.com/towhidrazu/30_Day_SQL_Query_Challenge-Solving_SQL_Problems_for_Interview/blob/main/Query1.png]
 
 
 
