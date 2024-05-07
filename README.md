@@ -18,7 +18,7 @@ Problem Statement:
   
   ![Query1](https://github.com/towhidrazu/30_Day_SQL_Query_Challenge-Solving_SQL_Problems_for_Interview/blob/main/Query1.png)
 
-### Solution: 
+### Solution of question no. 1: 
 
 ```
 a
