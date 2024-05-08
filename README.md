@@ -24,10 +24,10 @@ Problem Statement:
 WITH temp AS(
 	WITH CTE AS(
 		SELECT *, 
-				CASE 
-					WHEN brand1 < brand2 THEN CONCAT(brand1, brand2, year)
-					ELSE CONCAT (brand2, brand1, year)
-				END AS pair_id
+			CASE 
+				WHEN brand1 < brand2 THEN CONCAT(brand1, brand2, year)
+				ELSE CONCAT (brand2, brand1, year)
+			END AS pair_id
 		FROM brands)
 	SELECT *, ROW_NUMBER() OVER(PARTITION BY pair_id) AS rn
 	FROM CTE)
