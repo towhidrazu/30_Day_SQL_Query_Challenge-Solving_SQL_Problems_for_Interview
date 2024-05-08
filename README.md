@@ -39,7 +39,17 @@ WHERE rn = 1 OR (custom1 <> custom3 AND custom2 <> custom4)
 ### Solution of question no. 1: 2 independent CTEs
 
 ```
-a
+WITH CTE AS(SELECT *,
+		CASE 
+			WHEN brand1 > brand2 THEN CONCAT(brand2,brand1,year)
+			ELSE CONCAT (brand1, brand2, year)
+		END AS pair_id
+            FROM brands),
+     CTE2 AS(SELECT *, ROW_NUMBER() OVER(PARTITION BY pair_id) AS rn
+			 FROM CTE)
+SELECT brand1, brand2, year, custom1, custom2, custom3, custom4
+FROM CTE2
+WHERE rn = 1 OR (custom1 <> custom3 AND custom2 <> custom4)
 ```
 
 
