@@ -11,9 +11,9 @@ Acknowledgement: Questions for this projects are taken from multiple souces by y
 
 Problem Statement:
 - For pairs of brands in the same year (e.g. apple/samsung/2020 and samsung/apple/2020) 
-      - if custom1 = custom3 and custom2 = custom4 : then keep only one pair
+      - if custom1 = custom3 and custom2 = custom4 : then keep only one from pair
 - For pairs of brands in the same year 
-      - if custom1 != custom3 OR custom2 != custom4 : then keep both pairs
+      - if custom1 != custom3 OR custom2 != custom4 : then keep both from pairs
 - For brands that do not have pairs in the same year : keep those rows as well
   
   ![Query1](https://github.com/towhidrazu/30_Day_SQL_Query_Challenge-Solving_SQL_Problems_for_Interview/blob/main/Query1.png)
