@@ -18,7 +18,25 @@ Problem Statement:
   
   ![Query1](https://github.com/towhidrazu/30_Day_SQL_Query_Challenge-Solving_SQL_Problems_for_Interview/blob/main/Query1.png)
 
-### Solution of question no. 1: 
+### Solution of question no. 1: CTE inside CTE
+
+```
+WITH temp AS(
+	WITH CTE AS(
+		SELECT *, 
+				CASE 
+					WHEN brand1 < brand2 THEN CONCAT(brand1, brand2, year)
+					ELSE CONCAT (brand2, brand1, year)
+				END AS pair_id
+		FROM brands)
+	SELECT *, ROW_NUMBER() OVER(PARTITION BY pair_id) AS rn
+	FROM CTE)
+SELECT brand1, brand2, year, custom1, custom2, custom3, custom4
+FROM temp
+WHERE rn = 1 OR (custom1 <> custom3 AND custom2 <> custom4)
+```
+
+### Solution of question no. 1: 2 independent CTEs
 
 ```
 a
