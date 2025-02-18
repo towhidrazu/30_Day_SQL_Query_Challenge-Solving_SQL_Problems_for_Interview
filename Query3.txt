@@ -1,0 +1,3 @@
+select *
+from all_names
+where names SIMILAR TO '%[0-9]%' OR names SIMILAR TO '%[^a-zA-Z\s]%'
