@@ -68,3 +68,19 @@ from drivers d1
 full join drivers d2
 on d1.driver1 = d2.driver2
 ```
+
+## DAY 3
+
+### Question 3: Find the names contain special character or numbers
+
+Problem Statement:
+ 
+  ![Query1](https://github.com/towhidrazu/30_Day_SQL_Query_Challenge-Solving_SQL_Problems_for_Interview/blob/main/Query3.png)
+
+### Solution of question no. 2: Full Join
+
+```
+select *
+from all_names
+where names SIMILAR TO '%[0-9]%' OR names SIMILAR TO '%[^a-zA-Z\s]%'
+```
