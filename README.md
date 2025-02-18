@@ -117,6 +117,7 @@ from student_marks
 select student_name
 from CTE
 group by student_name
-having max(diff) = 0```
+having max(diff) = 0
+```
 
 
