@@ -84,3 +84,39 @@ select *
 from all_names
 where names SIMILAR TO '%[0-9]%' OR names SIMILAR TO '%[^a-zA-Z\s]%'
 ```
+
+
+
+## DAY 4
+
+### Question 4: Identify the students who always outscored themselves each semester.
+
+Problem Statement:
+ 
+  ![Query1](https://github.com/towhidrazu/30_Day_SQL_Query_Challenge-Solving_SQL_Problems_for_Interview/blob/main/Query4.png)
+
+### 1st Solution of question no. 4: Subquery, Lead window function
+
+```
+select student_name
+from
+(select *, lead(percentage,1,percentage) over (partition by id order by semester) next_per, percentage - lead(percentage,1,percentage) over (partition by id order by semester) diff
+from student_marks)
+group by student_name
+having max(diff) = 0
+```
+
+### 2nd Solution of question no. 4: CTE, Lead window function
+
+```
+with CTE as
+(
+select *, lead(percentage,1,percentage) over (partition by id order by semester) next_per, percentage - lead(percentage,1,percentage) over (partition by id order by semester) diff
+from student_marks
+)
+select student_name
+from CTE
+group by student_name
+having max(diff) = 0```
+
+
