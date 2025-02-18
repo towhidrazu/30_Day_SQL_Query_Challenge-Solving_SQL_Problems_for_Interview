@@ -52,4 +52,19 @@ FROM CTE2
 WHERE rn = 1 OR (custom1 <> custom3 AND custom2 <> custom4)
 ```
 
+## DAY 2
 
+### Question 2: Find the unique numbers of drivers and matching drivers
+
+Problem Statement:
+ 
+  ![Query1](https://github.com/towhidrazu/30_Day_SQL_Query_Challenge-Solving_SQL_Problems_for_Interview/blob/main/Query2.png)
+
+### Solution of question no. 2: Full Join
+
+```
+select d1.driver1, d2.driver2
+from drivers d1
+full join drivers d2
+on d1.driver1 = d2.driver2
+```
