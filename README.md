@@ -136,3 +136,72 @@ from student_semesters
 group by student_name
 having count(1)>2
 ```
+
+## DAY 6
+
+### Question 6: Delete duplicate user entries. Only the first entry made by each user must be kept.
+
+Problem Statement:
+ 
+  ![Query1](https://github.com/towhidrazu/30_Day_SQL_Query_Challenge-Solving_SQL_Problems_for_Interview/blob/main/Query6.png)
+
+### 1st Solution of question no.6: Subquery, row_number window function
+
+```
+select id, user_name, email
+from(
+select *, row_number() over(partition by user_name order by id)
+from user_entries
+	)
+where row_number = 1
+order by id
+```
+
+### 2nd Solution of question no.6: Subquery, group by
+
+```
+delete from user_entries
+where id not in(
+		select min(id)
+		from user_entries
+		group by user_name
+		)
+select * from user_entries
+```
+
+## DAY 7
+
+### Question 7: Identify the countries present in multiple continents.
+
+Problem Statement:
+ 
+  ![Query1](https://github.com/towhidrazu/30_Day_SQL_Query_Challenge-Solving_SQL_Problems_for_Interview/blob/main/Query7.png)
+
+### 1st Solution of question no.7: distinct, Subquery, group by, having
+
+```
+select country 
+from (select distinct * from countries) c
+group by country 
+having count(1) > 1
+```
+
+### 2nd Solution of question no.7: CTE, CTID, group by, having
+
+```
+with CTE as(
+		select *
+		from countries
+		where ctid in (
+				select min(ctid)
+				from countries
+				group by country, continent
+				)
+	)
+select country
+from CTE
+group by country
+having count(country)>1
+```
+
+
