@@ -1,0 +1,23 @@
+Solution 1
+
+select country 
+from (select distinct * from countries) c
+group by country 
+having count(1) > 1
+
+
+Solution 2
+
+with CTE as(
+			select *
+			from countries
+			where ctid in (
+			select min(ctid)
+			from countries
+			group by country, continent
+			)
+		)
+select country
+from CTE
+group by country
+having count(country)>1
