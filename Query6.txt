@@ -1,0 +1,21 @@
+Solution 1
+
+select id, user_name, email
+from(
+select *, row_number() over(partition by user_name order by id)
+from user_entries
+	)
+where row_number = 1
+order by id
+
+
+Solution 2
+
+delete from user_entries
+where id not in(
+				select min(id)
+				from user_entries
+				group by user_name
+				)
+
+select * from user_entries;
