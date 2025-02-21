@@ -120,4 +120,19 @@ group by student_name
 having max(diff) = 0
 ```
 
+## DAY 5
 
+### Question 5: Find the names contain special character or numbers
+
+Problem Statement: Identify the students who attended atleast 3 semesters.
+ 
+  ![Query1](https://github.com/towhidrazu/30_Day_SQL_Query_Challenge-Solving_SQL_Problems_for_Interview/blob/main/Query5.png)
+
+### Solution of question no. 5: GROUP BY, COUNT
+
+```
+select student_name
+from student_semesters
+group by student_name
+having count(1)>2
+```
